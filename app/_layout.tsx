@@ -12,7 +12,6 @@ export default function RootLayout() {
       
         const user = await AsyncStorage.getItem("user")
         const parsedUser = user ? JSON.parse(user) : null ;
-       
         setInitialRoute(parsedUser ? "(tabs)" :"login")
       } catch (error) {
         console.error('Error check user ', error)
