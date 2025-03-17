@@ -50,7 +50,8 @@ const _layout = () => {
             overflow:"hidden",
             position:"absolute",
             borderWidth:1,
-            borderColor:'#0f0d23'
+            borderColor:'#0f0d23',
+            
         }
       }}
     >

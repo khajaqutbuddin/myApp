@@ -8,13 +8,22 @@ export default function RootLayout() {
 
   useEffect(()=>{
     const checkUser = async()=>{
-      const user = await AsyncStorage.getItem("user")
-      setInitialRoute(user? "(tabs)" :"login")
+    try {
+      
+        const user = await AsyncStorage.getItem("user")
+        const parsedUser = user ? JSON.parse(user) : null ;
+       
+        setInitialRoute(parsedUser ? "(tabs)" :"login")
+      } catch (error) {
+        console.error('Error check user ', error)
+        setInitialRoute("login")
       }
+    }
       checkUser()
   },[])
 
-  if(!initialRoute){
+
+  if(initialRoute === null){
     return(
       <View className="flex-1 justify-center items-center bg-gray-900">
       <ActivityIndicator size="large" color="#fff" />
